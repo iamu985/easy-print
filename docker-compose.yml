@@ -1,0 +1,19 @@
+version: '24'
+services:
+  easy-print-app:
+    container_name: easy-print
+    image: easy-print-app:latest
+    depends_on:
+      - mongo
+    restart: always
+    build: .
+    ports:
+      - '5000:5000'
+  
+  mongo:
+    container_name: mongodb
+    image: mongo
+    volumes:
+      - ./data:/data/db
+    ports:
+      - '27017:27017'

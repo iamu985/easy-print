@@ -3,7 +3,8 @@ const mongoose = require('mongoose');
 const session = require('express-session');
 const app = express();
 const path = require('path');
-const port = 3000;
+const port = 5000;
+const mongo_uri = 'mongodb://mongodb:27017/easyprint'
 
 const BaseRouter = require('./routes/base.router');
 const AuthRouter = require('./routes/auth/auth.router');
@@ -12,7 +13,8 @@ const VendorRouter = require('./routes/auth/vendor.router');
 const db = require('./models');
 
 // Connection to database
-mongoose.connect('mongodb://localhost:27017/easyprint', {
+console.log(mongo_uri)
+mongoose.connect(mongo_uri, {
     useNewUrlParser: true,
     useUnifiedTopology: true
 }).then(() => {
